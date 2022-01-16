@@ -19,8 +19,8 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <Header />
-                <Container fluid >
-                    <Row md="auto" className="g-1">
+                <Container fluid className="justify-content-centers">
+                    <Row md="auto" className="g-1 h-100 d-flex justify-content-centers">
                         {products}
                     </Row>
                 </Container>

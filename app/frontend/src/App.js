@@ -6,27 +6,52 @@ import Product_card from './product_card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import axios from 'axios'
+import Table from 'react-bootstrap/Table'
 
 class App extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            products: []
+        }
+    }
 
     render() {
         let products = []
-        for (let i = 0; i < 10; i++) {
-            products.push(<Col md="auto">
-                <Product_card />
-            </Col>)
+        if (this.state.products != []) {
+            for (let i = 0; i < this.state.products.length; i++) {
+                products.push(<Col md="auto">
+                    <Product_card title={this.state.products[i].name}
+                        desc={this.state.products[i].desc}
+                        cost={this.state.products[i].cost}
+                        img_src={this.state.products[i].img_src} />
+                </Col>)
+            }
         }
+
         return (
             <React.Fragment>
                 <Header />
-                <Container fluid className="justify-content-centers">
-                    <Row md="auto" className="g-1 h-100 d-flex justify-content-centers">
-                        {products}
-                    </Row>
+                <Container fluid >
+                    <div class=" d-flex h-100 justify-content-center">
+                        <Row md="auto" className="g-2">
+                            {products}
+                        </Row>
+                    </div>
                 </Container>
                 <Footer />
             </React.Fragment >
         )
+    }
+
+    componentDidMount() {
+        axios.get('products.json')
+            .then(res => {
+                const data = res.data
+                this.setState({ products: data })
+            })
     }
 }
 

@@ -22,7 +22,7 @@ class App extends React.Component {
         let products = []
         if (this.state.products != []) {
             for (let i = 0; i < this.state.products.length; i++) {
-                products.push(<Col md="auto">
+                products.push(<Col >
                     <Product_card title={this.state.products[i].name}
                         desc={this.state.products[i].desc}
                         cost={this.state.products[i].cost}
@@ -35,7 +35,7 @@ class App extends React.Component {
             <React.Fragment>
                 <Header />
                 <Container fluid >
-                    <div class=" d-flex h-100 justify-content-center">
+                    <div class="d-flex h-100 justify-content-center">
                         <Row md="auto" className="g-2">
                             {products}
                         </Row>
@@ -47,7 +47,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('products.json')
+        axios.get('/products')
             .then(res => {
                 const data = res.data
                 this.setState({ products: data })

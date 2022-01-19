@@ -16,7 +16,7 @@ fi
 echo "Build React frontend"
 npm run build
 
-echo "Copied build frontend to backend"
+echo "Copying fronted to server"
 cp build/* ../backend/public/ -r
 
 cd ../backend

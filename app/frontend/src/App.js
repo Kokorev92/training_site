@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
-import Table from 'react-bootstrap/Table'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 class App extends React.Component {
     constructor(props) {
@@ -34,7 +34,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <Header />
-                <Container fluid >
+                <Container fluid>
                     <div class="d-flex h-100 justify-content-center">
                         <Row md="auto" className="g-2">
                             {products}

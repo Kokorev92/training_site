@@ -16,7 +16,7 @@ class Product_card extends React.Component {
                     Цена: {this.props.cost} RUB
                 </Card.Text>
                 <div class="text-center">
-                    <Button variant="primary">В корзину</Button>
+                    <Button variant="primary" onClick={this.props.onclick}>В корзину</Button>
                 </div>
             </Card.Body>
         </Card >)

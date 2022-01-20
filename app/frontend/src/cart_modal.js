@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import Table from 'react-bootstrap/Table'
 
 class Cart_modal extends React.Component {
     constructor(props) {
@@ -21,7 +22,13 @@ class Cart_modal extends React.Component {
     render() {
         var temp_array = []
         this.props.products.forEach((e) => {
-            temp_array.push(<tr><td>{e.name}</td><td>{e.count}</td><td>{e.cost}</td></tr>)
+            temp_array.push(<tr>
+                <td>{e.name}</td>
+                <td>{e.count}</td>
+                <td>{e.cost}</td>
+                <td>
+                    <Button variant="danger" onClick={() => { this.props.delete_product(e.id) }}></Button>
+                </td></tr >)
         })
         return (
             < React.Fragment >
@@ -31,8 +38,7 @@ class Cart_modal extends React.Component {
                         <Modal.Title>Корзина</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <h4>Товары в корзине</h4>
-                        <table>
+                        <Table hover>
                             <thead>
                                 <tr>
                                     <th>Наименование</th>
@@ -43,7 +49,7 @@ class Cart_modal extends React.Component {
                             <tbody>
                                 {temp_array}
                             </tbody>
-                        </table><br />
+                        </Table><br />
                         <h5>Итого: {this.props.summ.toFixed(2)} RUB</h5>
                     </Modal.Body>
                     <Modal.Footer>

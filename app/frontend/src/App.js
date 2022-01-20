@@ -42,7 +42,13 @@ class App extends React.Component {
         return (
             < React.Fragment >
                 {console.log(this.state.cart_summ)}
-                <Header cart={<Cart_modal summ={this.state.cart_summ} products={this.state.products_in_cart} clear_cart={this.clear_cart} />} />
+                <Header cart={<Cart_modal
+                    summ={this.state.cart_summ}
+                    products={this.state.products_in_cart}
+                    clear_cart={this.clear_cart}
+                    delete_product={this.delete_from_cart}
+                    order={this.place_order}
+                />} />
                 < Container fluid >
                     <Router>
                         <Routes>
@@ -78,19 +84,38 @@ class App extends React.Component {
                 products_copy[i].count += count
                 var new_summ = this.state.cart_summ + (count * cost)
                 console.log(`Update product, new summ = ${new_summ}`)
-                this.setState({ products_in_cart: products_copy, cart_summ: new_summ })
+                this.setState({ products_in_cart: products_copy, cart_summ: parseFloat(new_summ.toFixed(2)) })
                 return
             }
         }
         var joined = this.state.products_in_cart.concat({ "id": id, "name": name, "count": count, "cost": cost })
         var sum = this.state.cart_summ + (count * cost)
         console.log(`Add new product, new summ = ${sum}`)
-        this.setState({ products_in_cart: joined, cart_summ: sum })
+        this.setState({ products_in_cart: joined, cart_summ: parseFloat(sum.toFixed(2)) })
         return;
     }
 
     clear_cart = () => {
         this.setState({ products_in_cart: [], cart_summ: 0 })
+    }
+
+    place_order = () => { }
+
+    // Метод удаления товара из корзины
+    delete_from_cart = (id) => {
+        console.log(`Id product for delete = ${id}`)
+        if (this.state.cart_summ == 0 || this.state.products_in_cart.length == 0) {
+            return
+        }
+        for (var i = 0; i < this.state.products_in_cart.length; i++) {
+            if (this.state.products_in_cart[i].id == id) {
+                var new_summ = this.state.cart_summ - (this.state.products_in_cart[i].count * this.state.products_in_cart[i].cost)
+                var cart_copy = this.state.products_in_cart
+                cart_copy.splice(i, 1)
+                this.setState({ products_in_cart: cart_copy, cart_summ: parseFloat(new_summ.toFixed(2)) })
+                return
+            }
+        }
     }
 }
 

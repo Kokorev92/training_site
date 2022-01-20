@@ -18,6 +18,7 @@ npm run build
 
 echo "Copying fronted to server"
 cp build/* ../backend/public/ -r
+rm ../backend/public/products
 
 cd ../backend
 

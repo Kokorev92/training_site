@@ -47,6 +47,7 @@ class Cart_modal extends React.Component {
                         <h5>Итого: {this.props.summ.toFixed(2)} RUB</h5>
                     </Modal.Body>
                     <Modal.Footer>
+                        <Button variant="danger" onClick={this.props.clear_cart}>Очистить корзину</Button>
                         <Button variant="secondary" onClick={this.toggle}>
                             Закрыть
                         </Button>

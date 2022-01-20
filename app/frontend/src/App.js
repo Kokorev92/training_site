@@ -1,16 +1,16 @@
 import React from 'react'
-import './App.css'
-import Header from './header'
-import Footer from './footer'
-import Product_card from './product_card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import { BrowserRouter as Router, Routes, Route, Redirect } from 'react-router-dom'
+import './App.css'
+import Header from './header'
+import Product_card from './product_card'
+import Footer from './footer'
 import Contacts from './contacts'
 import Cart_modal from './cart_modal'
-import Button from 'react-bootstrap/Button'
 
 class App extends React.Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class App extends React.Component {
         return (
             < React.Fragment >
                 {console.log(this.state.cart_summ)}
-                <Header cart={<Cart_modal summ={this.state.cart_summ} products={this.state.products_in_cart} />} />
+                <Header cart={<Cart_modal summ={this.state.cart_summ} products={this.state.products_in_cart} clear_cart={this.clear_cart} />} />
                 < Container fluid >
                     <Router>
                         <Routes>
@@ -87,6 +87,10 @@ class App extends React.Component {
         console.log(`Add new product, new summ = ${sum}`)
         this.setState({ products_in_cart: joined, cart_summ: sum })
         return;
+    }
+
+    clear_cart = () => {
+        this.setState({ products_in_cart: [], cart_summ: 0 })
     }
 }
 

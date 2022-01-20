@@ -22,7 +22,8 @@ class Product_card extends React.Component {
                 <div class="text-center">
                     <FormControl type="number" size="sm"
                         value={this.state.count}
-                        onChange={(event) => { this.setState({ count: event.target.value }) }} />
+                        onChange={(event) => { this.setState({ count: event.target.value }) }}
+                        min={1} />
                     <Button variant="primary" className="m-1"
                         onClick={() => { this.props.onclick(this.props.product.id, this.props.product.name, this.state.count, this.props.product.cost) }}>
                         В корзину

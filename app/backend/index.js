@@ -15,6 +15,10 @@ app.get('/products', (request, response) => {
     get_data((json) => { response.send(json) })
 })
 
+app.get('/*', (request, response) => {
+    response.sendFile(__dirname + "/public/index.html")
+})
+
 function get_data(send_response) {
     db.all('SELECT name,desc,cost,img_src FROM products', [], (err, rows) => {
         if (err) {

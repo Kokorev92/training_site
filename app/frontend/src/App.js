@@ -28,12 +28,8 @@ class App extends React.Component {
         if (this.state.products != []) {
             for (let i = 0; i < this.state.products.length; i++) {
                 products.push(<Col >
-                    <Product_card title={this.state.products[i].name}
-                        id={this.state.products[i].id}
-                        desc={this.state.products[i].desc}
-                        cost={this.state.products[i].cost}
-                        img_src={this.state.products[i].img_src}
-                        onclick={() => this.add_product(this.state.products[i].id, this.state.products[i].name, 1, this.state.products[i].cost)}
+                    <Product_card product={this.state.products[i]}
+                        onclick={this.add_product}
                     />
                 </Col>)
             }

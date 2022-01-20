@@ -49,8 +49,8 @@ class App extends React.Component {
                     <Router>
                         <Routes>
                             <Route path="/" element={
-                                < div class="d-flex h-100 justify-content-center" >
-                                    <Row md="auto" className="g-2">
+                                < div class="d-flex h-100 justify-content-md-center" >
+                                    <Row md="auto" className="g-2 justify-content-md-center">
                                         {products}
                                     </Row>
                                 </div >}>

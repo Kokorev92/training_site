@@ -8,7 +8,8 @@ class Cart_modal extends React.Component {
         super(props)
 
         this.state = {
-            show: false
+            show: false,
+            cart_is_empty: true
         }
 
         this.toggle = this.toggle.bind(this)
@@ -16,7 +17,13 @@ class Cart_modal extends React.Component {
 
     toggle() {
         console.log('Toggled')
-        this.setState({ show: !this.state.show })
+        var empty = false
+        if (this.props.products.length == 0) {
+            empty = true
+        } else {
+            empty = false
+        }
+        this.setState({ show: !this.state.show, cart_is_empty: empty })
     }
 
     render() {
@@ -57,7 +64,7 @@ class Cart_modal extends React.Component {
                         <Button variant="secondary" onClick={this.toggle}>
                             Закрыть
                         </Button>
-                        <Button variant="primary" >
+                        <Button variant="primary" disabled={this.state.cart_is_empty} >
                             Оформить заказ
                         </Button>
                     </Modal.Footer>

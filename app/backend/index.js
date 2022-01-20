@@ -20,7 +20,7 @@ app.get('/*', (request, response) => {
 })
 
 function get_data(send_response) {
-    db.all('SELECT name,desc,cost,img_src FROM products', [], (err, rows) => {
+    db.all('SELECT id,name,desc,cost,img_src FROM products;', [], (err, rows) => {
         if (err) {
             throw err
         }

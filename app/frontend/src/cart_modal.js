@@ -64,7 +64,7 @@ class Cart_modal extends React.Component {
                         <Button variant="secondary" onClick={this.toggle}>
                             Закрыть
                         </Button>
-                        <Button variant="primary" disabled={this.state.cart_is_empty} >
+                        <Button variant="primary" onClick={this.props.order} disabled={this.state.cart_is_empty} >
                             Оформить заказ
                         </Button>
                     </Modal.Footer>

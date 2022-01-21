@@ -2,6 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Table from 'react-bootstrap/Table'
+import * as Icons from 'react-bootstrap-icons'
 
 class Cart_modal extends React.Component {
     constructor(props) {
@@ -34,7 +35,9 @@ class Cart_modal extends React.Component {
                 <td>{e.count}</td>
                 <td>{e.cost}</td>
                 <td>
-                    <Button variant="danger" onClick={() => { this.props.delete_product(e.id) }}></Button>
+                    <Button variant="outline-primary" size='sm' className='m-1'><Icons.PlusLg /></Button>
+                    <Button variant="outline-primary" size='sm' className='m-1'><Icons.DashLg /></Button>
+                    <Button variant="outline-danger" size='sm' className='m-1' onClick={() => { this.props.delete_product(e.id) }}><Icons.Trash /></Button>
                 </td></tr >)
         })
         return (

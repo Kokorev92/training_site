@@ -10,6 +10,7 @@ import Product_card from './product_card'
 import Footer from './footer'
 import Contacts from './contacts'
 import Cart_modal from './cart_modal'
+import Place_order_form from './place_order_form'
 
 class App extends React.Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class App extends React.Component {
         console.log(this.state.products_in_cart)
         return (
             < React.Fragment >
+                <Place_order_form />
                 {console.log(this.state.cart_summ)}
                 <Header cart={<Cart_modal
                     summ={this.state.cart_summ}

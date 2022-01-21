@@ -49,11 +49,12 @@ class App extends React.Component {
                     <Router>
                         <Routes>
                             <Route path="/" element={
-                                < div class="d-flex h-100 justify-content-md-center" >
-                                    <Row md="auto" className="g-2 justify-content-md-center">
+                                < div className="d-flex h-100 " >
+                                    <Row md="auto" className="g-2 justify-content-md-center ">
                                         {products}
                                     </Row>
-                                </div >}>
+                                </div >
+                            }>
                             </Route>
                             <Route path="/contacts" element={<Contacts />}>
                             </Route>

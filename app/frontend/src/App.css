@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.debug_border {
+    border : 1px dashed;
+}
+
+.b-red {
+    border-color: red;
+}
+
+.b-yellow {
+    border-color: yellow;
+}
+
+.b-green {
+    border-color: green;
+}

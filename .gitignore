@@ -1172,3 +1172,4 @@ gradle-app.setting
 .log
 package-lock.json
 app/backend/public/
+app/backend/server_settings.json

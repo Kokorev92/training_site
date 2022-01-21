@@ -40,6 +40,8 @@ class App extends React.Component {
                 <Header cart={<Cart_modal
                     summ={this.state.cart_summ}
                     products={this.state.products_in_cart}
+                    inc_product={this.inc_product_in_cart}
+                    dec_product={this.dec_product_in_cart}
                     clear_cart={this.clear_cart}
                     delete_product={this.delete_from_cart}
                     order={this.place_order}
@@ -108,6 +110,37 @@ class App extends React.Component {
                 var new_summ = this.state.cart_summ - (this.state.products_in_cart[i].count * this.state.products_in_cart[i].cost)
                 var cart_copy = this.state.products_in_cart
                 cart_copy.splice(i, 1)
+                this.setState({ products_in_cart: cart_copy, cart_summ: parseFloat(new_summ.toFixed(2)) })
+                return
+            }
+        }
+    }
+
+    inc_product_in_cart = (id) => {
+        console.log(`Increment of ${id}`)
+        for (var i = 0; i < this.state.products_in_cart.length; i++) {
+            if (this.state.products_in_cart[i].id == id) {
+                var new_summ = this.state.cart_summ + this.state.products_in_cart[i].cost
+                var cart_copy = this.state.products_in_cart
+                cart_copy[i].count++
+                this.setState({ products_in_cart: cart_copy, cart_summ: parseFloat(new_summ.toFixed(2)) })
+                return
+            }
+        }
+    }
+
+    dec_product_in_cart = (id) => {
+        console.log(`Decrement of ${id}`)
+        for (var i = 0; i < this.state.products_in_cart.length; i++) {
+            if (this.state.products_in_cart[i].id == id) {
+                var cart_copy = this.state.products_in_cart
+                if (cart_copy[i].count > 1) {
+                    var new_summ = this.state.cart_summ - this.state.products_in_cart[i].cost
+                    cart_copy[i].count--
+                } else {
+                    this.delete_from_cart(id)
+                    return
+                }
                 this.setState({ products_in_cart: cart_copy, cart_summ: parseFloat(new_summ.toFixed(2)) })
                 return
             }

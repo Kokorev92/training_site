@@ -35,8 +35,8 @@ class Cart_modal extends React.Component {
                 <td>{e.count}</td>
                 <td>{e.cost}</td>
                 <td>
-                    <Button variant="outline-primary" size='sm' className='m-1'><Icons.PlusLg /></Button>
-                    <Button variant="outline-primary" size='sm' className='m-1'><Icons.DashLg /></Button>
+                    <Button variant="outline-primary" size='sm' className='m-1' onClick={() => { this.props.inc_product(e.id) }}><Icons.PlusLg /></Button>
+                    <Button variant="outline-primary" size='sm' className='m-1' onClick={() => { this.props.dec_product(e.id) }}><Icons.DashLg /></Button>
                     <Button variant="outline-danger" size='sm' className='m-1' onClick={() => { this.props.delete_product(e.id) }}><Icons.Trash /></Button>
                 </td></tr >)
         })
@@ -48,7 +48,7 @@ class Cart_modal extends React.Component {
                         <Modal.Title>Корзина</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Table hover>
+                        <Table hover style={{ "vertical-align": "middle" }}>
                             <thead>
                                 <tr>
                                     <th>Наименование</th>
